@@ -1,0 +1,661 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Website</title>
+
+    <!-- BOOTSTRAP CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Iconify Icon -->
+    <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
+
+    <style>
+        body {
+            margin-top: 0;
+        }
+
+        nav.navbar {
+            margin-top: 0;
+        }
+
+        .navbar .nav-link:hover {
+            color: green !important;
+        }
+
+        .bg-light {
+            background-color: rgba(255, 255, 255, 0.641) !important;
+        }
+
+        .details {
+            background-color: rgba(0, 0, 0, 0.799);
+        }
+
+        .text-justify {
+            text-align: justify;
+        }
+
+        .box-shadow-white {
+            box-shadow: 0px 0px 5px rgb(253, 152, 0);
+        }
+
+        .container-fluid {
+            position: relative;
+        }
+
+        .main-cont {
+            top: 5%;
+            bottom: 5%;
+            left: 10%;
+            right: 10%;
+        }
+
+        /* .left_work,.right_work{
+            width: fit-content;
+            padding: 15px;
+            background-color: rgba(0, 0, 0, 0.618);
+            box-shadow: 0px 0px 5px rgb(253, 152, 0);
+        }
+
+        .left_work{
+            position:absolute;
+            bottom: 20%;
+            left: 20%;
+        }
+
+        .right_work{
+            position:absolute;
+            bottom: 23%;
+            right: 20%;
+        } */
+
+        .title {
+            font-size: 30px;
+            border-bottom: 2px solid black;
+            width: fit-content;
+        }
+
+        .card-img-top {
+            height: 350px;
+        }
+
+        .card {
+            cursor: pointer;
+            scale: 0.8;
+            transition: all 0.4s ease-in-out;
+            box-shadow: 0px 0px 10px rgb(0, 0, 0);
+        }
+
+        .card:hover {
+            scale: 0.9;
+            background-color: black;
+            color: white;
+        }
+
+        .styleform {
+            box-shadow: 0px 0px 5px grey;
+            margin: 20px;
+            margin-top: 40px;
+            margin-bottom: 40px;
+            transition: all 0.4s ease-in-out;
+            cursor: pointer;
+        }
+
+        /* .styleform:hover {
+            scale: 1.1;
+        } */
+
+        .imgback {
+            background-image: url(rear-view-programmer-working-all-night-long.jpg);
+            background-size: cover;
+            /* background-position: center bottom; */
+            /* Adjust the positioning */
+            background-position: center calc(80% + 10px);
+            height: 620px;
+            overflow-y: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .button_contact a {
+            text-decoration: none;
+            color: rgb(255, 193, 7);
+        }
+
+        .button_contact {
+            /* background-color: #2b006a;
+            border: 1px solid;
+            border-color: rgb(87, 36, 163); */
+            border: 1px solid rgb(255, 193, 7);
+            /* box-shadow: 0px 0px 10px rgb(229, 255, 0); */
+            padding: 8px;
+            border-radius: 8px;
+            margin: 5px;
+            width: fit-content;
+        }
+
+        .button_contact a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+
+        }
+
+        .button_contact:hover {
+            background-color: rgb(255, 193, 7);
+        }
+
+        .button_contact:hover a {
+            color: white;
+        }
+
+        .button_contact iconify-icon {
+            font-size: 25px;
+            margin-left: 5px;
+
+        }
+
+        .btns {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .head {
+            text-align: justify;
+        }
+
+        .info {
+            box-shadow: 0px 0px 10px grey;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .info:hover {
+            scale: 1.1;
+        }
+
+        .content {
+            top: 0px;
+            left: 0%;
+            right: 0%;
+            text-align: center;
+            border-radius: 5px;
+            font-size: 20px;
+            padding: 10px;
+        }
+
+        .aboutpopup {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            display: none;
+        }
+
+        .aboutpopup h4 {
+            margin-top: 20px;
+        }
+
+        .stylepop {
+            box-shadow: 0px 0px 20px grey;
+            padding: 20px;
+            height: 80vh;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            position: relative;
+            z-index: 999;
+            background-color: white;
+            border-radius: 10px;
+        }
+
+        .abpop {
+            text-align: justify;
+        }
+
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .titlesocial {
+            font-weight: bolder;
+            font-size: 20px;
+            font-style: italic;
+        }
+
+        #youtube {
+            color: red;
+            font-size: 2rem;
+        }
+
+        #facebook {
+            color: #1818cb;
+            font-size: 1.7rem;
+        }
+
+        #linkedin {
+            color: #211951;
+            font-size: 1.7rem;
+        }
+
+        #instagram {
+            color: rgb(157, 14, 55);
+            font-size: 1.9rem;
+        }
+
+        #twitter {
+            font-size: 1.4rem;
+        }
+
+        .socialicons a {
+            padding: 0px 10px;
+            margin-top: 10px;
+        }
+
+        .elements {
+            margin-top: 10px;
+        }
+
+        .footer .contacts a{
+            text-decoration: none;
+            color: rgb(255, 255, 255);
+            border: 1px solid black;
+            border-radius: 5px;
+            margin: 5px;
+            padding: 5px;
+            background-color: #211951;
+        }
+        .footer .contacts a:hover{
+            background-color: #140c44;
+        }
+
+        .text{
+            margin-left: 2px;
+        }
+
+        @media (max-width:450px) {
+            .btns {
+                flex-direction: column;
+            }
+
+            .button_contact {
+                max-width: 20rem;
+            }
+        }
+
+        @media (max-width:750px) {
+            .styleform {
+                width: 100% !important;
+                margin: 0px;
+                margin-top: 40px;
+                margin-bottom: 40px;
+            }
+
+            .styleform:hover {
+                scale: 1;
+            }
+        }
+
+        @media (max-width:1150px) {
+            .info {
+                margin-top: 60px !important;
+            }
+        }
+
+        @media (max-width:600px) {
+            .info:hover {
+                scale: 1;
+                margin-top: 20px !important;
+            }
+        }
+        @media (max-width:1000px) {
+            .aboutus{
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand text-success fw-bolder fs-4 me-5" href="#">Bootwork</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item ms-4">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item ms-4">
+                        <a class="nav-link active" aria-current="page" href="#">About</a>
+                    </li>
+                    <li class="nav-item ms-4">
+                        <a class="nav-link active" aria-current="page" href="#">Contact</a>
+                    </li>
+                    <li class="nav-item ms-4">
+                        <a class="nav-link active" aria-current="page" href="#">Help</a>
+                    </li>
+                </ul>
+                <form class="d-flex ps-3" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <div class="imgback container-fluid p-0 position-relative">
+        <!-- <img src="rear-view-programmer-working-all-night-long.jpg" alt="Sample Image"
+            style="width: 100%;" class="img-fluid opacity-70"> -->
+        <div class=" text-light p-2 rounded" data-aos="fade-down">
+            <div class="details p-4  container-xl rounded box-shadow-white">
+                <h3 class="text-warning text-center w-20 fw-bolder fs-4">BOOTWORK</h3>
+                <h5 class="text-warning fw-bolder text-center">You Know! We can turn your dream page into reality.
+                </h5>
+                <h6 class="text-emphasis p-2 text-justify mb-4">At Bootwork, we understand that every dream website
+                    starts with a vision. Our team works closely with you to understand your goals, target audience,
+                    and unique selling points. From there, we translate your ideas into a stunning online presence
+                    that resonates with your audience.
+                </h6>
+                <div class="btns">
+                    <div class="button_contact"><a href="#wedo">We Help With? <iconify-icon
+                                icon="tdesign:chat-bubble-help"></iconify-icon></a></div>
+                    <div class="button_contact"><a href="#contact">Contact Now <iconify-icon
+                                icon="fluent:emoji-sparkle-48-filled"></iconify-icon></a></div>
+                    <div class="button_contact"><a href="#about">What We Do? <iconify-icon
+                                icon="mdi:about"></iconify-icon></a></div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- <div class="left_work rounded" data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine">
+            <h2 class="text-warning p-4">YOU HAVE IDEA! <br> NOW WHAT?</h2>
+        </div>
+        <div class="right_work rounded" data-aos="fade-left" data-aos-offset="300" data-aos-easing="ease-in-sine">
+            <h2 class="text-warning p-4">LETS BUILD IT TO REALIY!!!</h2>
+        </div> -->
+
+    </div>
+
+
+
+
+    <div class="container-fluid d-flex align-items-center flex-column mt-2 mb-2" id="wedo">
+        <div class="title d-flex align-items-center rounded mb-1 mt-3"><iconify-icon
+                icon="material-symbols:stylus-laser-pointer"></iconify-icon><b>WE WILL BUILD</b><iconify-icon
+                icon="material-symbols:stylus-laser-pointer"></iconify-icon></div>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col">
+                <div class="card" onclick="showabout()">
+                    <img src="frontend.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Frontend Development</h5>
+                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
+                            additional content. This content is a little bit longer.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card" onclick="showabout()">
+                    <img src="backend-275575628.jpeg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Backend Development</h5>
+                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
+                            additional content. This content is a little bit longer.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card" onclick="showabout()">
+                    <img src="database-979439943.jpeg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Database Management</h5>
+                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
+                            additional content.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container d-flex align-items-center flex-column mt-2 mb-2">
+        <div class="title d-flex align-items-center rounded mb-1 mt-3"><iconify-icon
+                icon="material-symbols:stylus-laser-pointer"></iconify-icon><b>About Us</b><iconify-icon
+                icon="material-symbols:stylus-laser-pointer"></iconify-icon></div>
+
+        <div class="info mt-4 mb-5 rounded" id="about" onclick="showabout()">
+            <div class="content bg-dark text-light">We are Your Most Trusted Partner</div>
+
+            <div class="mainhead p-5 pt-4">
+                <div class="head">
+                    <h4><iconify-icon icon="lucide:mouse-pointer-click" style="rotate: 90deg;"></iconify-icon>About
+                        Bootwork
+                    </h4>
+
+                    At Bootwork, we are passionate about crafting exceptional digital experiences through comprehensive
+                    web
+                    development solutions. As a leading brand in the industry, we specialize in frontend development,
+                    backend development, and database development, empowering businesses to thrive in the digital
+                    landscape.
+                    Our mission at Bootwork is to empower businesses of all sizes to harness the full potential of the
+                    digital realm. We strive to create innovative, user-centric, and scalable web solutions that drive
+                    growth, enhance brand visibility, and foster meaningful connections with audiences worldwide.
+                </div>
+                <div class="head mt-5">
+                    <h4><iconify-icon icon="lucide:mouse-pointer-click" style="rotate: 90deg;"></iconify-icon>Expertise
+                    </h4>
+
+                    Frontend Development: At Bootwork, we breathe life into digital designs, turning concepts into
+                    captivating user interfaces. Our frontend development team excels in crafting visually stunning,
+                    intuitive, and responsive websites that elevate user experiences across all devices and platforms.
+
+                    Backend Development: Behind every seamless digital experience lies a robust backend infrastructure.
+                    Our
+                    backend development experts at Bootwork are adept at architecting and implementing scalable, secure,
+                    and
+                    high-performance server-side solutions tailored to meet the unique needs of our clients.
+
+                    Database Development: Data is the backbone of every successful digital venture. Our database
+                    development
+                    team at Bootwork specializes in designing and optimizing efficient database systems that enable
+                    businesses to store, retrieve, and analyze data with precision, reliability, and speed.
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container-fluid  d-flex align-items-center flex-column mt-2 mb-2 flex-wrap" id="contact">
+        <div class="title d-flex align-items-center rounded mb-1"><iconify-icon
+                icon="material-symbols:stylus-laser-pointer"></iconify-icon><b>Contact Us</b><iconify-icon
+                icon="material-symbols:stylus-laser-pointer"></iconify-icon></div>
+        <form action="https://api.web3forms.com/submit" class="styleform w-50 rounded" method="post">
+            <legend class="text-center p-3 bg-dark text-light rounded">Get in touch with us!</legend>
+            <input type="hidden" name="access_key" value="1512e03f-7f56-4999-ae7f-42af7e75678a">
+            <div class="mb-3 p-3">
+                <label for="exampleInputEmail1" class="form-label">Your Name</label>
+                <input type="name" class="form-control" name="name" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+            </div>
+            <div class="mb-3 p-3">
+                <label for="exampleInputEmail1" class="form-label">Email address</label>
+                <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+            </div>
+            <!-- <select class="form-select mt-4 mb-3" aria-label="Default select example">
+                <option selected>What You Want Me to Work For?</option>
+                <option value="Frontend Work">Frontend Work</option>
+                <option value="Backend Work">Backend Work</option>
+                <option value="Database Work">Database Work</option>
+            </select> -->
+            <div class="mb-3 p-3">
+                <label for="exampleFormControlTextarea1" class="form-label">Explain Your Idea</label>
+                <textarea class="form-control" name="message" id="exampleFormControlTextarea1" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary ms-3 mb-3">Submit</button>
+        </form>
+
+    </div>
+
+
+    <!-- POPUPS -->
+
+    <div class="aboutpopup">
+
+        <div class="container stylepop">
+            <div class="content bg-dark text-light mb-3">We are Your Most Trusted Partner</div>
+
+            <div class="abpop">
+                <h4><iconify-icon icon="lucide:mouse-pointer-click" style="rotate: 90deg;"></iconify-icon>About Bootwork
+                </h4>
+
+                At Bootwork, we are passionate about crafting exceptional digital experiences through comprehensive web
+                development solutions. As a leading brand in the industry, we specialize in frontend development,
+                backend
+                development, and database development, empowering businesses to thrive in the digital landscape.
+                Our mission at Bootwork is to empower businesses of all sizes to harness the full potential of the
+                digital
+                realm. We strive to create innovative, user-centric, and scalable web solutions that drive growth,
+                enhance
+                brand visibility, and foster meaningful connections with audiences worldwide.
+
+                <h4><iconify-icon icon="lucide:mouse-pointer-click" style="rotate: 90deg;"></iconify-icon>Expertise
+                </h4>
+
+                Frontend Development: At Bootwork, we breathe life into digital designs, turning concepts into
+                captivating
+                user interfaces. Our frontend development team excels in crafting visually stunning, intuitive, and
+                responsive websites that elevate user experiences across all devices and platforms.
+
+                Backend Development: Behind every seamless digital experience lies a robust backend infrastructure. Our
+                backend development experts at Bootwork are adept at architecting and implementing scalable, secure, and
+                high-performance server-side solutions tailored to meet the unique needs of our clients.
+
+                Database Development: Data is the backbone of every successful digital venture. Our database development
+                team at Bootwork specializes in designing and optimizing efficient database systems that enable
+                businesses
+                to store, retrieve, and analyze data with precision, reliability, and speed.
+
+                <h4><iconify-icon icon="lucide:mouse-pointer-click" style="rotate: 90deg;"></iconify-icon>Our Approach
+                </h4>
+
+                At Bootwork, we adopt a collaborative and client-centric approach to every project we undertake. We
+                believe
+                in fostering open communication, transparency, and accountability throughout the development process,
+                ensuring that our clients are actively involved and informed at every stage.
+
+                <h4><iconify-icon icon="lucide:mouse-pointer-click" style="rotate: 90deg;"></iconify-icon>Why Choose
+                    Bootwork
+                </h4>
+
+                <b>-Expertise:</b> With years of industry experience and a team of seasoned professionals, we possess
+                the
+                expertise to deliver top-notch web development solutions that exceed expectations. <br>
+                <b>-Innovation:</b> We are committed to staying ahead of the curve by embracing emerging technologies,
+                trends,
+                and best practices, ensuring that our clients always receive cutting-edge solutions. <br>
+                <b>-Reliability:</b> At Bootwork, reliability is at the core of everything we do. We pride ourselves on
+                delivering projects on time, within budget, and to the highest quality standards. <br>
+                <b>-Customer Satisfication:</b> Our ultimate goal is the satisfaction of our clients. We go above and
+                beyond to
+                understand their unique requirements, challenges, and objectives, delivering tailored solutions that
+                drive
+                tangible results.
+
+                <h4><iconify-icon icon="lucide:mouse-pointer-click" style="rotate: 90deg;"></iconify-icon>Get In Touch
+                </h4>
+
+                Ready to elevate your digital presence? Contact Bootwork today to discuss your project requirements and
+                discover how we can help you unlock the full potential of the digital landscape. Let's embark on a
+                journey
+                of innovation, creativity, and success together!
+            </div>
+        </div>
+
+    </div>
+
+    <hr class="me-5 ms-5">
+    <!-- Footer -->
+    <div class="container footer">
+        <div class="aboutus">
+            <div class="titlesocial">About Us</div>
+            <div class="elements"><b><i>| Your One Trusted Friend For Websites |</i></b> </div>
+        </div>
+        <div class="socials">
+            <div class="titlesocial">Socials</div>
+            <div class="socialicons d-flex align-items-center justify-content-center">
+                <a href="https://www.youtube.com/@mr.messbeats3076"><iconify-icon icon="grommet-icons:youtube"
+                        id="youtube"></iconify-icon></a>
+                <a href="https://www.linkedin.com/in/rohitkumhar1/"><iconify-icon icon="bi:facebook"
+                        id="facebook"></iconify-icon></a>
+                <a href="https://www.linkedin.com/in/rohitkumhar1/"><iconify-icon icon="devicon:twitter"
+                        id="twitter"></iconify-icon></a>
+                <a href="https://www.linkedin.com/in/rohitkumhar1/"><iconify-icon icon="simple-icons:linkedin"
+                        id="linkedin"></iconify-icon></a>
+                <a href="https://www.instagram.com/mr.messbeats/"><iconify-icon icon="ri:instagram-fill"
+                        id="instagram"></iconify-icon></a>
+            </div>
+        </div>
+        <div class="contacts">
+            <div class="titlesocial">Contacts</div>
+            <div class="conts">
+                <div class="email">
+                    <a href="mailto:kumharrohit001@gmail.com"
+                        class="d-flex align-items-center justify-content-center fs-5"><iconify-icon
+                            icon="mdi:email-edit-outline" class="rep"></iconify-icon>
+                        <div class="text">Bootworktrusted.com</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- BOOTSTRAP JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <!-- Required for hCaptcha [form]-->
+    <script src="https://web3forms.com/client/script.js" async defer></script>
+
+
+    <!-- AOS SCRIPT INITIALIZATION -->
+    <script>
+        AOS.init();
+
+        function showabout() {
+            const show = document.querySelector('.aboutpopup');
+            show.style.display = 'flex';
+        }
+
+        const popBox = document.querySelector(".aboutpopup");
+        const content = document.querySelector(".stylepop");
+        popBox.addEventListener('click', () => {
+            if (!content.contains(event.target)) {
+                popBox.style.display = 'none';
+            }
+        });
+    </script>
+
+</body>
+
+</html>
